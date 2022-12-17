@@ -34,7 +34,7 @@ app.post("/employee", async (req, res) => {
   try {
     //creating needed id as per json server;
     let findupdateid=await Employee.find({});
-    req.body.id=findupdateid.length;
+    req.body.id=findupdateid.length+1;
     const empdata=await Employee.create(req.body);
 
     return res.status(200).send({addedemployee:empdata})
