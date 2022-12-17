@@ -33,8 +33,9 @@ app.get("/", async (req, res) => {
 app.post("/employee", async (req, res) => {  
   try {
     //creating needed id as per json server;
-    let findupdateid=await Employee.find({});
+    let findupdateid=await Employee.find();
     req.body.id=findupdateid.length+1;
+    console.log("helooe",req.body)
     const empdata=await Employee.create(req.body);
 
     return res.status(200).send({addedemployee:empdata})
@@ -77,7 +78,7 @@ app.get("/employee", async (req, res) => {
     try {    
       const empdata=await Employee.find({id});
       const {_id}=empdata[0];
-      const delteddata=await Employee.findByIdAndUpdate(_id,req.body,{new:true});
+      const delteddata=await Employee.findByIdAndUpdate(_id,{...req.body},{new:true});
   
       return res.status(200).send(delteddata)
   
