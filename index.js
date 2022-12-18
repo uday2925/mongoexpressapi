@@ -33,8 +33,8 @@ app.get("/", async (req, res) => {
 app.post("/employee", async (req, res) => {  
   try {
     //creating needed id as per json server;
-    let findupdateid=await Employee.find();
-    req.body.id=findupdateid.length+1;
+    // let findupdateid=await Employee.find();
+    // req.body.id=findupdateid.length+1;
     console.log("helooe",req.body)
     const empdata=await Employee.create(req.body);
 
